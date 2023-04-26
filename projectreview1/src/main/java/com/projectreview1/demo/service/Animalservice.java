@@ -3,6 +3,7 @@ package com.projectreview1.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.projectreview1.demo.Repository.AnimalRepository;
@@ -32,6 +33,10 @@ public class Animalservice
   public void deleteAnimal(int count)
   {
 	  aniRepository.deleteById(count);
+  }
+  public List<Animal> sortAnimals(String field)
+  {
+	  return aniRepository.findAll(Sort.by(field));
   }
   
 }

@@ -41,4 +41,9 @@ public class AnimalController
      {
     	 aniService.deleteAnimal(count);
      }
+     @GetMapping("/sortAnimal/{field}")
+     public List<Animal> sortAnimals(@PathVariable String field)
+     {
+    	 return aniService.sortAnimals(field);
+     }
 }

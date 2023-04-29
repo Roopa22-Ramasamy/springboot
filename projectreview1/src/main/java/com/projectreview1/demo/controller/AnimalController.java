@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.projectreview1.demo.models.Animal;
 import com.projectreview1.demo.service.Animalservice;
@@ -31,10 +33,10 @@ public class AnimalController
      {
     	 return aniService.saveAnimal(a);
      }
-     @PutMapping(value="/updateAnimal")
-     public Animal updateStudent(@RequestBody Animal a)
+     @PutMapping(value="/updateAnimal{count}")
+     public Animal updateStudent(@RequestBody Animal a,@PathVariable int count)
      {
-    	 return aniService.saveAnimal(a);
+    	 return aniService.updateAnimal(a,count);
      }
      @DeleteMapping(value="/deleteAnimal/{co}")
      public void deleteAnimal(@PathVariable("co") int count)
@@ -46,4 +48,16 @@ public class AnimalController
      {
     	 return aniService.sortAnimals(field);
      }
+     @GetMapping("/pagingAnimal/{offset}/{pagesize}")
+     public List<Animal> pagingAnimals(@PathVariable int offset,@PathVariable int pagesize)
+     {
+    	 return aniService.pagingAnimals(offset,pagesize);
+     }
+     @GetMapping("/pagingAndSortingAnimal/{offset}/{pagesize}/{field}")
+     public List<Animal> pagingAndSortingAnimals (@PathVariable int offset,@PathVariable int pagesize,@PathVariable String field)
+     {
+    	 return aniService.pagingAndSortingAnimals(offset,pagesize,field);
+     }
+     
+     
 }

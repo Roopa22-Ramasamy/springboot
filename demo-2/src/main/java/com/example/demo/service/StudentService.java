@@ -1,10 +1,15 @@
 package com.example.demo.service;
 
 
+import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Student;
@@ -27,11 +32,23 @@ public class StudentService
           return obj;
           // return studRepository.save(s);
        }
-       public Student updateStudent(Student s)
+       public  Student updateStudent(Student s,int rno) 
        {
-    	  Student obj = studRepository.save(s);
-          return obj;
-       }
+   		Optional<Student> optional=studRepository.findById(rno);
+   		Student obj=null;
+   		if(optional.isPresent())
+   		{
+   			obj=optional.get();
+   			/*obj.setRegno(s.getRegno());
+   			obj.setName(s.getName());
+   			obj.setDept(s.getDept());
+   			obj.setEmail(s.getEmail());*/
+   		studRepository.save(s);
+   		}
+   		return obj;
+   	
+   		
+   	}
        public void deleteStudent(int regno)
        {
     	   studRepository.deleteById(regno);
@@ -44,8 +61,39 @@ public class StudentService
        }
        public List<Student> sortStudents(String field)
        {
-    	   return studRepository.findAll(Sort.by(field));
-    	   
+    	   //return studRepository.findAll(Sort.by(field)); //ascending
+    	   return studRepository.findAll(Sort.by(Direction.DESC,field));  //descending
        }
+	public List<Student> pagingStudents(int offset, int pagesize) 
+	{
+		PageRequest paging = PageRequest.of(offset,pagesize);
+		Page<Student> studData = studRepository.findAll(paging);
+		List<Student> studList = studData.getContent();
+		return studList;
+	}
+	public List<Student> pagingAndSortingStudents(int offset,int pageSize,String field)
+	{
+		PageRequest paging = PageRequest.of(offset,pageSize).withSort(Sort.by(field));
+		Page<Student> stud = studRepository.findAll(paging);
+		return stud.getContent();
+	}
+	public List<Student> fetchStudentsByNamePrefix(String prefix)
+	{
+		return studRepository.findByNameStartingWith(prefix);
+		
+	}
+	public List<Student> fetchStudentsByNameSuffix(String suffix)
+	{
+		return studRepository.findByNameEndingWith(suffix);
+		
+	}
+	public List<Student> fetchStudentsByNameDepartment(String dept)
+	{
+		return studRepository.findByDept(dept);
+	}
+	public List<Student> getStudentsByDept(String dept,String name)
+	  {
+		  return studRepository.getStudentsByDept(dept, name);
+	  }
        
 }

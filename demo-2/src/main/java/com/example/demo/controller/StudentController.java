@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Student;
@@ -31,10 +32,13 @@ public class StudentController
        {
     	   return studService.saveStudent(s);
        }
-       @PutMapping(value="/updateStudent")
-       public Student updateStudent(@RequestBody Student s)
+       @PutMapping(value="/updateStudent/{rno}")
+       public  Student updateStudent(@RequestBody Student s,@PathVariable int rno)
        {
-    	   return studService.saveStudent(s);
+       	
+       	return studService.updateStudent(s,rno);
+       	
+       	
        }
        @DeleteMapping(value="/deleteStudent/{rno}")
        public void deleteStudent(@PathVariable("rno") int regno)
@@ -51,6 +55,38 @@ public class StudentController
        public List<Student> sortStudents(@PathVariable String field  )
        {
     	   return studService.sortStudents(field);
+       }
+       @GetMapping("/pagingStudents/{offset}/{pagesize}")
+        public List<Student> pagingStudents(@PathVariable int offset,@PathVariable int pagesize)
+       {
+    	   return studService.pagingStudents(offset,pagesize);
+       }
+       @GetMapping("/pagingAndSortingStudent/{offset}/{pagesize}/{field}")
+       public List<Student> pagingAndSortingStudents(@PathVariable int offset,@PathVariable int pagesize,@PathVariable String field)
+       {
+    	   return studService.pagingAndSortingStudents(offset,pagesize,field);
+       }
+       @GetMapping("/fetchStudentsByNamePrefix")
+       public List<Student> fetchStudentsByNamePrefix(@RequestParam String prefix)
+   	    {
+   		return studService.fetchStudentsByNamePrefix(prefix);
+   		
+   	    }
+       @GetMapping("/fetchStudentsByNameSuffix")
+       public List<Student> fetchStudentsByNameSuffix(@RequestParam String suffix)
+       {
+    	   return studService.fetchStudentsByNameSuffix(suffix);
+       }
+       @GetMapping("/fetchStudentsByNameDepartment")
+       public List<Student> fetchStudentsByNameDepartment(@RequestParam String dept)
+       {
+    	   return studService.fetchStudentsByNameDepartment(dept);
+    	   
+       }
+       @GetMapping("/fetchStudentsByDept/{dept}/{name}")
+       public List<Student> fetchStudentsByDept(@PathVariable String dept,@PathVariable String name)
+       {
+    	   return studService.getStudentsByDept(dept,name);
        }
        
 }

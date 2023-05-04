@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Student;
 import com.example.demo.repository.StudentRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class StudentService
@@ -95,5 +97,19 @@ public class StudentService
 	  {
 		  return studRepository.getStudentsByDept(dept, name);
 	  }
+	@Transactional 
+	public int deleteStudentByName(String name)
+	{
+		return studRepository.deleteStudentByName(name);
+	}
+	@Transactional
+	public int updateStudentByName(String dept,String name)
+	{
+		return studRepository.updateStudentByName(dept, name);
+	}
+	public List<Student> fetchStudentByDept(String dept)
+	{
+		return studRepository.fetchStudentByDept(dept);
+	}
        
 }

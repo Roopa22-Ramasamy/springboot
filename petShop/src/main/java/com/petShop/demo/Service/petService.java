@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.petShop.demo.Model.Pet;
 import com.petShop.demo.Repository.petRepository;
 
+import jakarta.transaction.Transactional;
+
 
 @Service
 public class petService 
@@ -47,7 +49,7 @@ public class petService
 	  public List<Pet> sortPet(String field)
 	  {
 		  //return aniRepository.findAll(Sort.by(field));
-		  return ptRepository.findAll(Sort.by(Direction.DESC,field));
+		 return ptRepository.findAll(Sort.by(Direction.DESC,field));
 	  }
 	  public List<Pet> pagingPet(int offset, int pagesize) 
 	  {
@@ -63,6 +65,43 @@ public class petService
 		   Page<Pet> pt = ptRepository.findAll(paging);
 		   return pt.getContent();
 	  }
+	public List<Pet> fetchPetByNamePrefix(String prefix) 
+	{
+		
+		return ptRepository.findByBreedStartingWith(prefix);
+	}
+	public List<Pet> fetchPetByNameSuffix(String suffix) 
+	{
+		
+		return ptRepository.findByBreedEndingWith(suffix);
+	}
+////	public List<Pet> fetchStudentsByNameBreed(String breed) 
+//	{
+//		
+//		return ptRepository.findByBreed(breed);
+//	}
+	public List<Pet> getPetByAnimalCode(int animalCode, String breed) 
+	{
+		
+		return ptRepository.getPetByAnimalCode(animalCode,breed);
+	}
+	@Transactional
+	public int deletePetByAnimalCode(int animalCode) 
+	{
+		
+		return ptRepository.deletePetByAnimalCode(animalCode);
+	}
+	@Transactional
+	public int updatePetByAnimalCode(int animalCode, String breed) 
+	{
+		
+		return ptRepository.updatePetByDetail(animalCode,breed);
+	}
+	public List<Pet> fetchPetByBreed(String breed)
+	{
+		
+		return ptRepository.fetchPetByBreed(breed);
+	}
 	   
 		
 }

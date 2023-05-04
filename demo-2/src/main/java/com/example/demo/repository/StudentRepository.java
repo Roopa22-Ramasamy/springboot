@@ -26,6 +26,14 @@ public interface StudentRepository extends JpaRepository<Student,Integer>
 	@Query("delete from Student s where s.name=?1")
 	public int deleteStudentByName(String name);
 	
+	@Modifying
+	@Query("update Student s set s.dept=?1 where s.name=?2")
+	public int updateStudentByName(String dept,String name);
+	
+	@Query(value="select * from Student s where s.dept=?",nativeQuery=true)
+	public List<Student> fetchStudentByDept(String dept);
+	
+	//jpa derived queries
 	 List<Student> findByNameStartingWith(String prefix);
 	 List<Student> findByNameEndingWith(String suffix);
 	 List<Student> findByDept(String dept);

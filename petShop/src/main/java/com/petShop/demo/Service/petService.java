@@ -48,7 +48,7 @@ public class petService
 	  }
 	  public List<Pet> sortPet(String field)
 	  {
-		  //return aniRepository.findAll(Sort.by(field));
+		  //return ptRepository.findAll(Sort.by(field));
 		 return ptRepository.findAll(Sort.by(Direction.DESC,field));
 	  }
 	  public List<Pet> pagingPet(int offset, int pagesize) 

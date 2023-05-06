@@ -12,5 +12,5 @@ public class InstaController
       public String getPost(@RequestParam String username)
       {
     	  return "The post is ready for "+username;
-      }
+      }	
 }

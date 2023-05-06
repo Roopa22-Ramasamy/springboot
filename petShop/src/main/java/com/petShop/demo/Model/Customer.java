@@ -6,7 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -21,7 +21,7 @@ public class Customer
        private String customerEmail;
        private int customerPhoneNumber;
        @OneToOne(cascade=CascadeType.ALL)
-     // @JoinColumn(name = "customer_Id" )
+     // @JoinColumn(name = "customer_Id" )`
        private CustomerAddress customAddress;
 	public int getId() {
 		return id;

@@ -31,6 +31,7 @@ public interface petRepository extends JpaRepository<Pet,Integer>
 		@Query("update Pet p set p.animalCode=?1 where p.breed=?2")
 		public int updatePetByDetail(int animalCode,String breed);
 		
+		//native query
 		@Query(value="select * from Pet p where p.breed=?",nativeQuery=true)
 		public List<Pet> fetchPetByBreed(String breed);
 		

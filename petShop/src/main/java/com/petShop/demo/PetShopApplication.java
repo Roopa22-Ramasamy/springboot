@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 		title="PETSHOP",
 		version="1.1.2",
 		description="petshop",
-		contact=@Contact(name="Roopa",email="727821tuec201@skct.edu.in")))
+		contact=@Contact(name="ROOPA",email="727821tuec201@skct.edu.in")))
 public class PetShopApplication {
 
 	public static void main(String[] args) {

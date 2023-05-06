@@ -88,8 +88,7 @@ public class petController
 // 	   return ptService.fetchStudentsByNameBreed(breed);
 // 	   
 //    }
-	@Tag(name="fetchDetailsByAnimalCodeAndBreed"
-			+ "]",description="fetch")
+	@Tag(name="fetchDetailsByAnimalCodeAndBreed",description="fetch")
     @GetMapping("/fetchPet/{animalCode}/{breed}")
     public List<Pet> fetchPetByanimalCode(@PathVariable int animalCode,@PathVariable String breed)
     {

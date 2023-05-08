@@ -47,5 +47,10 @@ public class BookService
    		return obj;
    	
 	}
+	public void deleteBook(int bookId) 
+	{
+		
+		bRep.deleteById(bookId);
+	}
 
 }

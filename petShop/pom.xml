@@ -8,10 +8,10 @@
 		<version>3.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>petShop</artifactId>
+	<groupId>com.example.EducationalLoanPortal</groupId>
+	<artifactId>EducationalLoanPortal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>petShop</name>
+	<name>EducationalLoanPortal</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -43,15 +43,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>demo-2</artifactId>
+			<groupId>com.example.Educational</groupId>
+			<artifactId>Educational</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    <version>2.1.0</version>
-</dependency>
 	</dependencies>
 
 	<build>

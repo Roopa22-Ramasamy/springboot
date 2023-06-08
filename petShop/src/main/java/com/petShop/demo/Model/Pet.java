@@ -1,30 +1,31 @@
 package com.petShop.demo.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Pet 
+public class Pet 	
 {
+   @GeneratedValue
 	@Id
-	private int animalCode;
-    private String animal;
+	private int animalcode;
+    private String name;
     private String breed;
     private int age;
     private String color;
     private int amount;
-    private String health;
-	public int getAnimalCode() {
-		return animalCode;
+	public int getAnimalcode() {
+		return animalcode;
 	}
-	public void setAnimalCode(int animalCode) {
-		this.animalCode = animalCode;
+	public void setAnimalcode(int animalcode) {
+		this.animalcode = animalcode;
 	}
-	public String getAnimal() {
-		return animal;
+	public String getName() {
+		return name;
 	}
-	public void setAnimal(String animal) {
-		this.animal = animal;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getBreed() {
 		return breed;
@@ -50,10 +51,6 @@ public class Pet
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public String getHealth() {
-		return health;
-	}
-	public void setHealth(String health) {
-		this.health = health;
-	}
+
 }
+	

@@ -48,6 +48,7 @@ public class StudentService
    		studRepository.save(s);
    		}
    		return obj;
+   		
    	
    		
    	}

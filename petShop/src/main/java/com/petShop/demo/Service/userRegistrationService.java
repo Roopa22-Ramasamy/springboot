@@ -21,7 +21,9 @@ public class userRegistrationService
 	public List<Registration> getAllUsers() 
 	{
 		 List<Registration> petList = usrRegistrationRepository.findAll();
-	      return petList;
+      return petList;
 	}
+    
+    
 
 }

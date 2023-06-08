@@ -31,20 +31,26 @@ public class petService
 		  Pet obj = ptRepository.save(p);
 		  return obj;
 	  }
-	  public Pet updatePet(Pet p,int animalCode)
+	  public Pet updatePet(Pet p)
 	  {
-		 Optional<Pet> optional = ptRepository.findById(animalCode);
-		 Pet obj = null;
-		 if(optional.isPresent())
-		 {
-			 obj = optional.get();
-			 ptRepository.save(p);
-		 }
-		  return obj;
+		  return ptRepository.save(p);
 	  }
-	  public void deletePet(int animalCode)
+		 //Optional<Pet> optional = ptRepository.findById(age);
+//		 		 if (optional.isPresent()) {
+//		        Pet pet = optional.get();
+//		        pet.setName(p.getName());
+//		        pet.setBreed(p.getBreed());
+//		        pet.setAge(p.getAge());
+//		        pet.setColor(p.getColor());
+//		        pet.setAmount(p.getAmount());
+//		        return ptRepository.save(pet);
+//		    }
+//		return null;
+//		 		//throw new RuntimeException("Pet not found with age: " + age);
+	
+	  public void deletePet(int age)
 	  {
-		  ptRepository.deleteById(animalCode);
+		  ptRepository.deleteById(age);
 	  }
 	  public List<Pet> sortPet(String field)
 	  {
@@ -80,22 +86,22 @@ public class petService
 //		
 //		return ptRepository.findByBreed(breed);
 //	}
-	public List<Pet> getPetByAnimalCode(int animalCode, String breed) 
+	public List<Pet> getPetByAnimalCode(int animalcode, String breed) 
 	{
 		
-		return ptRepository.getPetByAnimalCode(animalCode,breed);
+		return ptRepository.getPetByAnimalCode(animalcode,breed);
 	}
 	@Transactional
-	public int deletePetByAnimalCode(int animalCode) 
+	public int deletePetByAnimalCode(int animalcode) 
 	{
 		
-		return ptRepository.deletePetByAnimalCode(animalCode);
+		return ptRepository.deletePetByAnimalCode(animalcode);
 	}
 	@Transactional
-	public int updatePetByAnimalCode(int animalCode, String breed) 
+	public int updatePetByAnimalCode(int animalcode, String breed) 
 	{
 		
-		return ptRepository.updatePetByDetail(animalCode,breed);
+		return ptRepository.updatePetByDetail(animalcode,breed);
 	}
 	public List<Pet> fetchPetByBreed(String breed)
 	{

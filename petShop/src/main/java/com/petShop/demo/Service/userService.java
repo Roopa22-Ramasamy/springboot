@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petShop.demo.Model.User;
+import com.petShop.demo.Model.Registration;
 
 import com.petShop.demo.Repository.userRepository;
 
@@ -15,9 +15,9 @@ public class userService
 {
     @Autowired
     userRepository userRep;
-	public String checkLogin(String uname, String password) 
+	public String checkLogin(String username, String password) 
 	{
-		User u = userRep.findByuname(uname) ;
+		Registration u = userRep.findByusername(username) ;
 		if(u == null)
 		{
 			return" No user found " ;
@@ -35,19 +35,19 @@ public class userService
 		}
 	}
 	
-	public User addUser(User m)
+	public Registration addUser(Registration m)
 	{
 		return userRep.save(m) ;
 	}
 	
-	public List<User> getUser()
+	public List<Registration> getUser()
 	{
 		return userRep.findAll() ;
 	}
-	public User updateUser(User us,int id)
+	public Registration updateUser(Registration us,int id)
 	{
-		Optional<User> optional = userRep.findById(id);
-		User obj = null;
+		Optional<Registration> optional = userRep.findById(id);
+		Registration obj = null;
 		if(optional.isPresent())
 		{
 			 obj = optional.get();

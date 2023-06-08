@@ -1,52 +1,29 @@
 package com.petShop.demo.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Registration 
 {
 	@Id
-	
+	@GeneratedValue
     private int userId;  
-	private String firstName;
-	private String lastName;
-	private int password;
-	private int reEnterPassword;
+	private String username;
 	private String email;
-	private int phoneNumber;
-	private String residence;
-	private String gender;
-	private int age;
+	private String password;
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getUsername() {
+		return username;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public int getPassword() {
-		return password;
-	}
-	public void setPassword(int password) {
-		this.password = password;
-	}
-	public int getReEnterPassword() {
-		return reEnterPassword;
-	}
-	public void setReEnterPassword(int reEnterPassword) {
-		this.reEnterPassword = reEnterPassword;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getEmail() {
 		return email;
@@ -54,33 +31,15 @@ public class Registration
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhoneNumber() {
-		return phoneNumber;
+	public String getPassword() {
+		return password;
 	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getResidence() {
-		return residence;
-	}
-	public void setResidence(String residence) {
-		this.residence = residence;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
+}
 
-	}
 	
 
 	
